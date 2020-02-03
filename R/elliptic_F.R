@@ -11,7 +11,7 @@
 #'
 #' @examples elliptic_F(1, 0.2)
 #' gsl::ellint_F(1, sqrt(0.2))
-elliptic_F <- function(phi, m, minerror = .Machine$double.eps){
+elliptic_F <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
     0
   }else if(phi == pi/2 && m == 1){

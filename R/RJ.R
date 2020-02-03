@@ -9,7 +9,7 @@
 #'
 #' @examples Carlson_RJ(5, 2, 3, 4)
 #' gsl::ellint_RJ(5, 2, 3, 4)
-Carlson_RJ <- function(x, y, z, p, minerror = .Machine$double.eps){
+Carlson_RJ <- function(x, y, z, p, minerror = 2*.Machine$double.eps){
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z); p <- as.complex(p)
   A0 <- A <- (x + y + z + p + p) / 5
   delta <- (p-x)*(p-y)*(p-z)
@@ -41,7 +41,8 @@ Carlson_RJ <- function(x, y, z, p, minerror = .Machine$double.eps){
 
   (1 - 3*E2/14 + E3/6 + 9*E2*E2/88 - 3*E4/22 - 9*E2*E3/52 + 3*E5/26) /
     f / A / sqrt(A) +
-    6*sum(sapply(1+e, function(y) Carlson_RC(1,y,minerror)) / d)
+    ifelse(length(e),
+           6*sum(sapply(1+e, function(y) Carlson_RC(1,y,minerror)) / d), 0)
 
 }
 

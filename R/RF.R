@@ -9,7 +9,7 @@
 #'
 #' @examples Carlson_RF(5, 2, 3)
 #' gsl::ellint_RF(5, 2, 3)
-Carlson_RF <- function(x, y, z, minerror = .Machine$double.eps){
+Carlson_RF <- function(x, y, z, minerror = 2*.Machine$double.eps){
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z)
   dx <- dy <- dz <- Inf
   while(max(dx,dy,dz) > minerror){

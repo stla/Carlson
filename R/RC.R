@@ -9,6 +9,6 @@
 #'
 #' @examples Carlson_RC(5, 2)
 #' gsl::ellint_RC(5, 2)
-Carlson_RC <- function(x, y, minerror = .Machine$double.eps){
+Carlson_RC <- function(x, y, minerror = 2*.Machine$double.eps){
   Carlson_RF(x, y, y, minerror)
 }

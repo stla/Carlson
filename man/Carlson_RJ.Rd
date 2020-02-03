@@ -4,7 +4,7 @@
 \alias{Carlson_RJ}
 \title{Carlson elliptic integral RJ}
 \usage{
-Carlson_RJ(x, y, z, p, minerror = .Machine$double.eps)
+Carlson_RJ(x, y, z, p, minerror = 2 * .Machine$double.eps)
 }
 \arguments{
 \item{x, y, z, p}{real or complex numbers; at least...}

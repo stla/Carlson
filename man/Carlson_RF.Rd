@@ -4,7 +4,7 @@
 \alias{Carlson_RF}
 \title{Carlson elliptic integral RF}
 \usage{
-Carlson_RF(x, y, z, minerror = .Machine$double.eps)
+Carlson_RF(x, y, z, minerror = 2 * .Machine$double.eps)
 }
 \arguments{
 \item{x, y, z}{real or complex numbers; at least...}

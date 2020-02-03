@@ -4,7 +4,7 @@
 \alias{elliptic_E}
 \title{Incomplete elliptic integral of the second kind}
 \usage{
-elliptic_E(phi, m, minerror = .Machine$double.eps)
+elliptic_E(phi, m, minerror = 2 * .Machine$double.eps)
 }
 \arguments{
 \item{phi}{amplitude, real or complex number}

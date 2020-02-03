@@ -9,7 +9,7 @@
 #'
 #' @examples Carlson_RD(5, 2, 3)
 #' gsl::ellint_RD(5, 2, 3)
-Carlson_RD <- function(x, y, z, minerror = .Machine$double.eps){
+Carlson_RD <- function(x, y, z, minerror = 2*.Machine$double.eps){
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z)
   dx <- dy <- dz <- Inf
   s <- 0

@@ -1,8 +1,8 @@
 #' Carlson elliptic integral RF
 #' @description Evaluate the Carlson elliptic integral RF.
 #'
-#' @param x,y,z real or complex numbers; at least...
-#' @param minerror minimum relative error
+#' @param x,y,z real or complex numbers; at most one can be 0
+#' @param minerror minimal relative error
 #'
 #' @return A complex number.
 #' @export
@@ -10,6 +10,9 @@
 #' @examples Carlson_RF(5, 2, 3)
 #' gsl::ellint_RF(5, 2, 3)
 Carlson_RF <- function(x, y, z, minerror = 2*.Machine$double.eps){
+  if(sum(c(x,y,z)==0) > 1){
+    stop("At most one of `x`, `y`, `z` can be 0.")
+  }
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z)
   dx <- dy <- dz <- Inf
   while(max(dx,dy,dz) > minerror){

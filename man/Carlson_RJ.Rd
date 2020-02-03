@@ -7,9 +7,9 @@
 Carlson_RJ(x, y, z, p, minerror = 2 * .Machine$double.eps)
 }
 \arguments{
-\item{x, y, z, p}{real or complex numbers; at least...}
+\item{x, y, z, p}{real or complex numbers; at most one can be 0}
 
-\item{minerror}{minimal relative error}
+\item{minerror}{bound on the relative error}
 }
 \value{
 A complex number.

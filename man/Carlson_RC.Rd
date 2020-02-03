@@ -7,7 +7,7 @@
 Carlson_RC(x, y, minerror = 2 * .Machine$double.eps)
 }
 \arguments{
-\item{x, y}{real or complex numbers; at least...}
+\item{x, y}{real or complex numbers, with \code{y} different from \code{0}}
 
 \item{minerror}{bound of relative error}
 }

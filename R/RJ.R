@@ -1,8 +1,8 @@
 #' Carlson elliptic integral RJ
 #' @description Evaluate the Carlson elliptic integral RJ.
 #'
-#' @param x,y,z,p real or complex numbers; at least...
-#' @param minerror minimal relative error
+#' @param x,y,z,p real or complex numbers; at most one can be 0
+#' @param minerror bound on the relative error
 #'
 #' @return A complex number.
 #' @export
@@ -10,6 +10,9 @@
 #' @examples Carlson_RJ(5, 2, 3, 4)
 #' gsl::ellint_RJ(5, 2, 3, 4)
 Carlson_RJ <- function(x, y, z, p, minerror = 2*.Machine$double.eps){
+  if(sum(c(x,y,z,p)==0) > 1){
+    stop("At most one of `x`, `y`, `z`, `p` can be 0.")
+  }
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z); p <- as.complex(p)
   A0 <- A <- (x + y + z + p + p) / 5
   delta <- (p-x)*(p-y)*(p-z)

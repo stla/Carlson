@@ -18,3 +18,13 @@ test_that("n=m", {
     (1-m)*elliptic_PI(phi, m, m) + m*sin(2*phi)/2/sqrt(1-m*sin(phi)^2)
   )
 })
+
+test_that("n=1", {
+  phi <- 1+1i
+  m <- 2-1i
+  expect_equal(
+    elliptic_PI(phi, 1, m),
+    (sqrt(1-m*sin(phi)^2)*tan(phi)-elliptic_E(phi,m))/(1-m) +
+      elliptic_F(phi, m)
+  )
+})

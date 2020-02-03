@@ -11,7 +11,7 @@
 #' gsl::ellint_RJ(5, 2, 3, 4)
 Carlson_RJ <- function(x, y, z, p, minerror = .Machine$double.eps){
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z); p <- as.complex(p)
-  A0 <- A <- (x+y+z+p+p)/5
+  A0 <- A <- (x + y + z + p + p) / 5
   delta <- (p-x)*(p-y)*(p-z)
   f <- fac <- 1
   d <- e <- c()
@@ -21,7 +21,7 @@ Carlson_RJ <- function(x, y, z, p, minerror = .Machine$double.eps){
     d <- c(d, dnew*f)
     e <- c(e, fac * delta / dnew / dnew)
     f <- f * 4
-    fac <- fac / 4^3
+    fac <- fac / 64
     lambda <- sqrt(x)*sqrt(y) + sqrt(y)*sqrt(z) + sqrt(z)*sqrt(x)
     x <- (x + lambda) / 4
     y <- (y + lambda) / 4

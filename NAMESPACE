@@ -3,6 +3,7 @@
 export(Carlson_RC)
 export(Carlson_RD)
 export(Carlson_RF)
+export(Carlson_RG)
 export(Carlson_RJ)
 export(elliptic_E)
 export(elliptic_F)

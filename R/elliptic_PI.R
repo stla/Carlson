@@ -9,7 +9,8 @@
 #' @return A complex number.
 #' @export
 #'
-#' @examples elliptic_PI(1, 2, 0.2)
+#' @examples elliptic_PI(1, 0.8, 0.2)
+#' gsl::ellint_P(1, sqrt(0.2), -0.8)
 elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
     0

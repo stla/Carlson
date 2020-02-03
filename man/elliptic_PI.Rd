@@ -21,5 +21,6 @@ A complex number.
 Evaluate the incomplete elliptic integral of the third kind.
 }
 \examples{
-elliptic_PI(1, 2, 0.2)
+elliptic_PI(1, 0.8, 0.2)
+gsl::ellint_P(1, sqrt(0.2), -0.8)
 }

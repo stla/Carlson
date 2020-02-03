@@ -14,15 +14,19 @@
 elliptic_E <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
     0
-  }else if(phi == pi/2 && m == 1){
-    1
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
-    sine <- sin(phi)
-    sine2 <- sine*sine
-    cosine2 <- 1 - sine2
-    oneminusmsine2 <- 1 - m*sine2
-    sine * (Carlson_RF(cosine2, oneminusmsine2, 1, minerror) -
-              m * sine2 * Carlson_RD(cosine2, oneminusmsine2, 1, minerror) / 3)
+    if(m == 0){
+      phi
+    }else if(m == 1){
+      sin(phi)
+    }else{
+      sine <- sin(phi)
+      sine2 <- sine*sine
+      cosine2 <- 1 - sine2
+      oneminusmsine2 <- 1 - m*sine2
+      sine * (Carlson_RF(cosine2, oneminusmsine2, 1, minerror) -
+                m * sine2 * Carlson_RD(cosine2, oneminusmsine2, 1, minerror) / 3)
+    }
   }else if(Re(phi) > pi/2){
     k <- 0
     while(Re(phi) > pi/2){

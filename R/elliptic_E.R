@@ -13,12 +13,12 @@
 #' gsl::ellint_E(1, sqrt(0.2))
 elliptic_E <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
-    0
+    as.complex(0)
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
     if(m == 0){
-      phi
+      as.complex(phi)
     }else if(m == 1){
-      sin(phi)
+      sin(as.complex(phi))
     }else{
       sine <- sin(phi)
       sine2 <- sine*sine

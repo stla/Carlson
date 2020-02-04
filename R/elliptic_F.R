@@ -13,15 +13,21 @@
 #' gsl::ellint_F(1, sqrt(0.2))
 elliptic_F <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
-    0
-  }else if(phi == pi/2 && m == 1){
-    Inf
+    as.complex(0)
+  }else if(abs(phi) == pi/2 && m == 1){
+    complex(real = sign(phi)*Inf, imaginary = 0)
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
-    sine <- sin(phi)
-    sine2 <- sine*sine
-    cosine2 <- 1 - sine2
-    oneminusmsine2 <- 1 - m*sine2
-    sine * Carlson_RF(cosine2, oneminusmsine2, 1, minerror)
+    if(m == 1 && abs(Re(phi)) < pi/2){
+      as.complex(asinh(tan(phi)))
+    }else if(m == 0){
+      as.complex(phi)
+    }else{
+      sine <- sin(phi)
+      sine2 <- sine*sine
+      cosine2 <- 1 - sine2
+      oneminusmsine2 <- 1 - m*sine2
+      sine * Carlson_RF(cosine2, oneminusmsine2, 1, minerror)
+    }
   }else if(Re(phi) > pi/2){
     k <- 0
     while(Re(phi) > pi/2){

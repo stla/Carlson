@@ -14,10 +14,10 @@
 elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
     0
-  }else if(phi == pi/2 && m == 1){
-    ifelse(n >= 1, -Inf, Inf)
+  }else if(phi == pi/2 && m == 1 && n != 1){
+    ifelse(n > 1, -Inf, Inf)
   }else if(phi == pi/2 && n == 1){
-    complex(real = Inf, imaginary = -Inf)
+    NaN #complex(real = Inf, imaginary = -Inf)
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
     sine <- sin(phi)
     sine2 <- sine*sine

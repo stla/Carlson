@@ -2,7 +2,7 @@
 #' @description Evaluate the Carlson elliptic integral RC.
 #'
 #' @param x,y real or complex numbers, with \code{y} different from \code{0}
-#' @param minerror bound of relative error
+#' @param minerror bound on the relative error passed to \code{\link{Carlson_RF}}
 #'
 #' @return A complex number.
 #' @export

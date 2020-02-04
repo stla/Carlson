@@ -2,7 +2,8 @@
 #' @description Evaluate the incomplete elliptic integral of the third kind.
 #'
 #' @param phi amplitude, real or complex number
-#' @param n,m parameters, real or complex numbers
+#' @param n characteristic, real or complex number
+#' @param m parameter, real or complex number
 #' @param minerror the bound on the relative error passed to
 #' \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}
 #'

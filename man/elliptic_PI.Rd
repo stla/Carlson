@@ -9,7 +9,9 @@ elliptic_PI(phi, n, m, minerror = 2 * .Machine$double.eps)
 \arguments{
 \item{phi}{amplitude, real or complex number}
 
-\item{n, m}{parameters, real or complex numbers}
+\item{n}{characteristic, real or complex number}
+
+\item{m}{parameter, real or complex number}
 
 \item{minerror}{the bound on the relative error passed to
 \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}}

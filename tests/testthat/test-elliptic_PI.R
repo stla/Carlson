@@ -55,3 +55,24 @@ test_that("misc equalities", {
     elliptic_PI(pi/2, n/m, 1/m) / sqrt(m)
   )
 })
+
+test_that("Symmetry", {
+  z <- -5 + 3i
+  n <- 3 + 11i
+  m <- -4 - 9i
+  expect_equal(
+    elliptic_PI(Conj(z), Conj(n), Conj(m)),
+    Conj(elliptic_PI(z, n, m))
+  )
+})
+
+test_that("Parity", {
+  z <- -5 + 3i
+  n <- 3 + 11i
+  m <- -4 - 9i
+  expect_equal(
+    elliptic_PI(-z, n, m),
+    -elliptic_PI(z, n, m)
+  )
+})
+

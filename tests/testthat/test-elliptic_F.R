@@ -12,3 +12,9 @@ test_that("phi = pi/2", {
   expect_equal(elliptic_F(pi/2,1/z),
                sqrt(z)*(elliptic_F(pi/2,z) - 1i*elliptic_F(pi/2,1-z)))
 })
+
+test_that("Representation in terms of elliptic_PI", {
+  z <- 7 - 6i
+  m <- -3
+  expect_equal(elliptic_F(z,m), elliptic_PI(z,0,m))
+})

@@ -11,17 +11,17 @@
 elliptic_Z <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(m == 1){
     if(abs(Re(phi)) <= pi/2){
-      sin(phi)
+      sin(as.complex(phi))
     }else if(Re(phi) > pi/2){
       while(Re(phi) > pi/2){
         phi <- phi - pi
       }
-      sin(phi)
+      sin(as.complex(phi))
     }else{
       while(Re(phi) < pi/2){
         phi <- phi + pi
       }
-      sin(phi)
+      sin(as.complex(phi))
     }
   }else{
     elliptic_E(phi, m, minerror) -

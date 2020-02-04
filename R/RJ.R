@@ -10,6 +10,7 @@
 #' @examples Carlson_RJ(5, 2, 3, 4)
 #' gsl::ellint_RJ(5, 2, 3, 4)
 Carlson_RJ <- function(x, y, z, p, minerror = 2*.Machine$double.eps){
+  stopifnot(minerror > 0)
   if(sum(c(x,y,z,p)==0) > 1){
     stop("At most one of `x`, `y`, `z`, `p` can be 0.")
   }

@@ -2,7 +2,7 @@
 #' @description Evaluate the Carlson elliptic integral RD.
 #'
 #' @param x,y,z real or complex numbers; at most one can be 0
-#' @param minerror bound of relative error
+#' @param minerror bound on relative error
 #'
 #' @return A complex number.
 #' @export
@@ -10,6 +10,7 @@
 #' @examples Carlson_RD(5, 2, 3)
 #' gsl::ellint_RD(5, 2, 3)
 Carlson_RD <- function(x, y, z, minerror = 2*.Machine$double.eps){
+  stopifnot(minerror > 0)
   if(sum(c(x,y,z)==0) > 1){
     stop("At most one of `x`, `y`, `z` can be 0.")
   }

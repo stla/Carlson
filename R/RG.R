@@ -2,7 +2,8 @@
 #' @description Evaluate the Carlson elliptic integral RG.
 #'
 #' @param x,y,z real or complex numbers; at most one can be zero
-#' @param minerror bound on the relative error
+#' @param minerror bound on the relative error passed to
+#' \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}
 #'
 #' @return A complex number.
 #' @export

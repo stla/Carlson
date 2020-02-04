@@ -18,7 +18,7 @@ elliptic_F <- function(phi, m, minerror = 2*.Machine$double.eps){
     NaN # complex(real = sign(phi)*Inf, imaginary = 0)
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
     if(m == 1 && abs(Re(phi)) < pi/2){
-      as.complex(asinh(tan(phi)))
+      as.complex(asinh(tan(phi))) # or atanh(sin(phi))
     }else if(m == 0){
       as.complex(phi)
     }else{

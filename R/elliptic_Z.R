@@ -9,7 +9,11 @@
 #' @return A complex number.
 #' @export
 elliptic_Z <- function(phi, m, minerror = 2*.Machine$double.eps){
-  elliptic_E(phi, m, minerror) -
-    elliptic_E(pi/2, m, minerror)/elliptic_F(pi/2, m, minerror) *
-    elliptic_F(phi, m, minerror)
+  if(m == 1 && abs(Re(phi)) <= pi/2){
+    sin(phi)
+  }else{
+    elliptic_E(phi, m, minerror) -
+      elliptic_E(pi/2, m, minerror)/elliptic_F(pi/2, m, minerror) *
+      elliptic_F(phi, m, minerror)
+  }
 }

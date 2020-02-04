@@ -28,3 +28,30 @@ test_that("n=1", {
       elliptic_F(phi, m)
   )
 })
+
+test_that("m=0", {
+  z <- 1+1i
+  n <- 3 # does not work for complex n
+  expect_equal(
+    elliptic_PI(z,n,0),
+    atanh(sqrt(n-1)*tan(z)) / sqrt(n-1)
+  )
+})
+
+test_that("m=1", {
+  z <- 1+1i
+  n <- 3
+  expect_equal(
+    elliptic_PI(z,n,1),
+    (sqrt(n) * atanh(sqrt(n)*sin(z)) - atanh(sin(z))) / (n-1)
+  )
+})
+
+test_that("misc equalities", {
+  n <- 2+2i
+  m <- 3
+  expect_equal(
+    elliptic_PI(asin(1/sqrt(m)), n, m),
+    elliptic_PI(pi/2, n/m, 1/m) / sqrt(m)
+  )
+})

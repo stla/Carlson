@@ -18,6 +18,12 @@ elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
     ifelse(n > 1, -Inf, Inf)
   }else if(phi == pi/2 && n == 1){
     NaN #complex(real = Inf, imaginary = -Inf)
+  }else if(phi == pi/2 && m == 0){
+    pi/2/sqrt(as.complex(1-n))
+  }else if(phi == pi/2 && n == m){
+    elliptic_E(pi/2, m, minerror) / (1-m)
+  }else if(phi == pi/2 && n == 0){
+    elliptic_F(pi/2, m, minerror)
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
     sine <- sin(phi)
     sine2 <- sine*sine

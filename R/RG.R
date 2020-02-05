@@ -11,6 +11,9 @@ Carlson_RG <- function(x, y, z, minerror = 2*.Machine$double.eps){
   if(sum(c(x,y,z)==0) > 1){
     stop("At most one of `x`, `y`, `z` can be 0.")
   }
+  if(z == 0){
+    return(Carlson_RG(y, z, x, minerror))
+  }
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z)
   (z*Carlson_RF(x, y, z, minerror) -
      (x-z)*(y-z)*Carlson_RD(x, y, z, minerror)/3 +

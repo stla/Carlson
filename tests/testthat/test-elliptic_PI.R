@@ -1,9 +1,12 @@
 context("elliptic_PI")
 
 test_that("Comparisons with Wolfram", {
-  expect_equal(0.3468194+0.7198448i, elliptic_PI(1+1i, 2, -2), tolerance = 1e-7)
-  expect_equal(0.67834548+1.05327009i, elliptic_PI(1+1i, 2, -2i), tolerance = 1e-7)
-  expect_equal(0.671398646+0.79618888i, elliptic_PI(1+1i, 2+1i, -2i), tolerance = 1e-7)
+  expect_equal(0.3468194+0.7198448i,
+               elliptic_PI(1+1i, 2, -2), tolerance = 1e-7)
+  expect_equal(0.67834548+1.05327009i,
+               elliptic_PI(1+1i, 2, -2i), tolerance = 1e-7)
+  expect_equal(0.671398646+0.79618888i,
+               elliptic_PI(1+1i, 2+1i, -2i), tolerance = 1e-7)
 })
 
 test_that("n=0", {
@@ -33,7 +36,7 @@ test_that("m=0", {
   z <- 1+1i
   n <- 3 # does not work for complex n
   expect_equal(
-    elliptic_PI(z,n,0),
+    elliptic_PI(z, n, 0),
     atanh(sqrt(n-1)*tan(z)) / sqrt(n-1)
   )
 })
@@ -42,7 +45,7 @@ test_that("m=1", {
   z <- 1+1i
   n <- 3
   expect_equal(
-    elliptic_PI(z,n,1),
+    elliptic_PI(z, n, 1),
     (sqrt(n) * atanh(sqrt(n)*sin(z)) - atanh(sin(z))) / (n-1)
   )
 })

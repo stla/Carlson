@@ -5,7 +5,7 @@ Version: 0.1.0
 Date: 2020-02-06
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: Evaluation of the Carlson elliptic integrals and the incomplete elliptic integrals with complex arguments.
+Description: Evaluation of the Carlson elliptic integrals and the incomplete elliptic integrals with complex arguments. The implementations use Carlson's algorithms <doi.org/10.1007/BF02198293>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

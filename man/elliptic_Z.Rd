@@ -11,8 +11,8 @@ elliptic_Z(phi, m, minerror = 2 * .Machine$double.eps)
 
 \item{m}{parameter, real or complex number}
 
-\item{minerror}{bound on relative error passed to \code{\link{EllipticE}}
-and \code{\link{EllipticF}}}
+\item{minerror}{bound on relative error passed to \code{\link{elliptic_E}}
+and \code{\link{elliptic_F}}}
 }
 \value{
 A complex number.

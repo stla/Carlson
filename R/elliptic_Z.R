@@ -3,8 +3,8 @@
 #'
 #' @param phi amplitude, real or complex number
 #' @param m parameter, real or complex number
-#' @param minerror bound on relative error passed to \code{\link{EllipticE}}
-#' and \code{\link{EllipticF}}
+#' @param minerror bound on relative error passed to \code{\link{elliptic_E}}
+#' and \code{\link{elliptic_F}}
 #'
 #' @return A complex number.
 #' @export

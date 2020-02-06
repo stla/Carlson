@@ -2,9 +2,10 @@ Package: Carlson
 Type: Package
 Title: Carlson Elliptic Integrals and Incomplete Elliptic Integrals
 Version: 0.1.0
+Date: 2020-02-06
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: Evaluation of the Carson elliptic integrals and the incomplete elliptic integrals with complex arguments.
+Description: Evaluation of the Carlson elliptic integrals and the incomplete elliptic integrals with complex arguments.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

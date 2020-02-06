@@ -1,2 +1,3 @@
 # Carlson
-Carlson elliptic integrals
+
+Carlson elliptic integrals and incomplete elliptic integrals with complex arguments.

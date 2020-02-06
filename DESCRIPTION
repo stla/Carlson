@@ -13,3 +13,5 @@ RoxygenNote: 7.0.2
 Suggests: 
     gsl,
     testthat
+URL: https://github.com/stla/Carlson
+BugReports: https://github.com/stla/Carlson/issues

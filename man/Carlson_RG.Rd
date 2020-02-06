@@ -7,7 +7,7 @@
 Carlson_RG(x, y, z, minerror = 2 * .Machine$double.eps)
 }
 \arguments{
-\item{x, y, z}{real or complex numbers; at most one can be zero}
+\item{x, y, z}{real or complex numbers; they can be zero}
 
 \item{minerror}{bound on the relative error passed to
 \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}}

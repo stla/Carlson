@@ -1,15 +1,20 @@
 #' Carlson elliptic integral RG
 #' @description Evaluate the Carlson elliptic integral RG.
 #'
-#' @param x,y,z real or complex numbers; at most one can be zero
+#' @param x,y,z real or complex numbers; they can be zero
 #' @param minerror bound on the relative error passed to
 #' \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}
 #'
 #' @return A complex number.
 #' @export
 Carlson_RG <- function(x, y, z, minerror = 2*.Machine$double.eps){
-  if(sum(c(x,y,z)==0) > 1){
-    stop("At most one of `x`, `y`, `z` can be 0.")
+  zeros <- sum(c(x,y,z)==0)
+  if(zeros == 3L){
+    return(0i)
+  }
+  if(zeros == 2L){
+    nonzero <- which(c(x,y,z) != 0)
+    return(sqrt(as.complex(c(x,y,z)[nonzero]))/2)
   }
   if(z == 0){
     return(Carlson_RG(y, z, x, minerror))

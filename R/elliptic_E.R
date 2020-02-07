@@ -14,6 +14,8 @@
 elliptic_E <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(phi == 0){
     as.complex(0)
+  }else if(is.infinite(Re(m)) && Im(m) == 0){
+    NaN
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
     if(m == 0){
       as.complex(phi)
@@ -21,6 +23,9 @@ elliptic_E <- function(phi, m, minerror = 2*.Machine$double.eps){
       sin(as.complex(phi))
     }else{
       sine <- sin(phi)
+      if(is.infinite(Re(sine)) || is.infinite(Im(sine))){
+        stop("`sin(phi)` is not finite.")
+      }
       sine2 <- sine*sine
       cosine2 <- 1 - sine2
       oneminusmsine2 <- 1 - m*sine2

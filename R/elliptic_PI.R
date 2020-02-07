@@ -13,10 +13,11 @@
 #' @examples elliptic_PI(1, 0.8, 0.2)
 #' gsl::ellint_P(1, sqrt(0.2), -0.8)
 elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
-  if(phi == 0){
-    0
-  }else if(phi == pi/2 && m == 1 && n != 1){
-    ifelse(n > 1, -Inf, Inf) # quid si n complexe ?
+  if(phi == 0 || (is.infinite(Re(m)) && Im(m) == 0) ||
+     (is.infinite(Re(n)) && Im(n) == 0)){
+    as.complex(0)
+  }else if(phi == pi/2 && m == 1 && Im(n) == 0 && n != 1){
+    ifelse(Re(n) > 1, -Inf, Inf)
   }else if(phi == pi/2 && n == 1){
     NaN #complex(real = Inf, imaginary = -Inf)
   }else if(phi == pi/2 && m == 0){
@@ -27,6 +28,9 @@ elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
     elliptic_F(pi/2, m, minerror)
   }else if(Re(phi) >= -pi/2 && Re(phi) <= pi/2){
     sine <- sin(phi)
+    if(is.infinite(Re(sine)) || is.infinite(Im(sine))){
+      stop("`sin(phi)` is not finite.")
+    }
     sine2 <- sine*sine
     cosine2 <- 1 - sine2
     oneminusmsine2 <- 1 - m*sine2

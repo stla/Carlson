@@ -7,6 +7,10 @@
 #' @return A complex number.
 #' @export
 #'
+#' @note The function returns a value when \code{x}, \code{y} or \code{z}
+#' are negative real numbers, but this value is not the one of the
+#' Carlson integral.
+#'
 #' @examples Carlson_RD(5, 2, 3)
 #' gsl::ellint_RD(5, 2, 3)
 Carlson_RD <- function(x, y, z, minerror = 2*.Machine$double.eps){

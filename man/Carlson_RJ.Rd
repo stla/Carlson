@@ -17,6 +17,11 @@ A complex number.
 \description{
 Evaluate the Carlson elliptic integral RJ.
 }
+\note{
+The function returns a value when \code{x}, \code{y}, \code{z} or
+\code{p} are negative real numbers, but this value is not the one of the
+Carlson integral.
+}
 \examples{
 Carlson_RJ(5, 2, 3, 4)
 gsl::ellint_RJ(5, 2, 3, 4)

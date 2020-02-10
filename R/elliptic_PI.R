@@ -19,7 +19,7 @@ elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
   }else if(phi == pi/2 && m == 1 && Im(n) == 0 && n != 1){
     ifelse(Re(n) > 1, -Inf, Inf)
   }else if(phi == pi/2 && n == 1){
-    NaN #complex(real = Inf, imaginary = -Inf)
+    NaN
   }else if(phi == pi/2 && m == 0){
     pi/2/sqrt(as.complex(1-n))
   }else if(phi == pi/2 && n == m){

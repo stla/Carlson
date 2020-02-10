@@ -2,7 +2,7 @@
 #' @description Evaluate the Carlson elliptic integral RD.
 #'
 #' @param x,y,z real or complex numbers; at most one can be 0
-#' @param minerror bound on relative error
+#' @param minerror bound on the relative error
 #'
 #' @return A complex number.
 #' @export

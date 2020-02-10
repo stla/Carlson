@@ -9,7 +9,7 @@ Carlson_RD(x, y, z, minerror = 2 * .Machine$double.eps)
 \arguments{
 \item{x, y, z}{real or complex numbers; at most one can be 0}
 
-\item{minerror}{bound on relative error}
+\item{minerror}{bound on the relative error}
 }
 \value{
 A complex number.

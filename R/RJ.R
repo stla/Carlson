@@ -51,9 +51,6 @@ Carlson_RJ <- function(x, y, z, p, minerror = 2*.Machine$double.eps){
     f / A / sqrt(A) +
     ifelse(length(e),
            6*sum(ifelse(e == 0, 1, atan(sqrt(e))/sqrt(e)) / d), 0)
-  # ifelse(length(e),
-  #        6*sum(sapply(1+e, function(y) Carlson_RC(1,y,minerror)) / d), 0)
-
 }
 
 

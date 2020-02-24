@@ -6,7 +6,8 @@
 #' @param minerror bound on relative error passed to \code{\link{elliptic_E}}
 #' and \code{\link{elliptic_F}}
 #'
-#' @return A complex number.
+#' @return A complex number, the value of the Jacobi zeta function
+#' \ifelse{html}{\out{Z(&phi;,m)}}{\eqn{Z(\phi,m)}{Z(phi,m)}}.
 #' @export
 elliptic_Z <- function(phi, m, minerror = 2*.Machine$double.eps){
   if(is.infinite(Re(m)) && Im(m) == 0){

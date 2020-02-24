@@ -7,7 +7,8 @@
 #' @param minerror the bound on the relative error passed to
 #' \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}
 #'
-#' @return A complex number.
+#' @return A complex number, the value of the incomplete elliptic integral
+#' \ifelse{html}{\out{&Pi;(&phi;,n,m)}}{\eqn{\Pi(\phi,n,m)}{PI(phi,n,m)}}.
 #' @export
 #'
 #' @examples elliptic_PI(1, 0.8, 0.2)

@@ -15,7 +15,8 @@ elliptic_E(phi, m, minerror = 2 * .Machine$double.eps)
 \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}}
 }
 \value{
-A complex number.
+A complex number, the value of the incomplete elliptic integral
+\ifelse{html}{\out{E(&phi;,m)}}{\eqn{E(\phi,m)}{E(phi,m)}}.
 }
 \description{
 Evaluate the incomplete elliptic integral of the second kind.

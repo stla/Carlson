@@ -4,7 +4,8 @@
 #' @param x,y,z real or complex numbers; at most one can be 0
 #' @param minerror bound on relative error
 #'
-#' @return A complex number.
+#' @return A complex number, the value of the Carlson elliptic integral
+#' \ifelse{html}{\out{R<sub>F</sub>(x,y,z)}}{\eqn{R_F(x,y,z)}{RF(x,y,z)}}.
 #' @export
 #'
 #' @note The function returns a value when \code{x}, \code{y} or \code{z}

@@ -5,7 +5,8 @@
 #' @param minerror bound on the relative error passed to
 #' \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}
 #'
-#' @return A complex number.
+#' @return A complex number, the value of the Carlson elliptic integral
+#' \ifelse{html}{\out{R<sub>G</sub>(x,y,z)}}{\eqn{R_G(x,y,z)}{RG(x,y,z)}}.
 #' @export
 Carlson_RG <- function(x, y, z, minerror = 2*.Machine$double.eps){
   zeros <- sum(c(x,y,z)==0)

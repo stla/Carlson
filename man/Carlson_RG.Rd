@@ -13,7 +13,8 @@ Carlson_RG(x, y, z, minerror = 2 * .Machine$double.eps)
 \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}}
 }
 \value{
-A complex number.
+A complex number, the value of the Carlson elliptic integral
+\ifelse{html}{\out{R<sub>G</sub>(x,y,z)}}{\eqn{R_G(x,y,z)}{RG(x,y,z)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RG.

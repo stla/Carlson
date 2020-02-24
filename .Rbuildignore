@@ -3,3 +3,4 @@
 ^README\.md$
 ^inst/someTests$
 ^cran-comments\.md$
+^CRAN-RELEASE$

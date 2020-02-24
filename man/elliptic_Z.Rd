@@ -15,7 +15,8 @@ elliptic_Z(phi, m, minerror = 2 * .Machine$double.eps)
 and \code{\link{elliptic_F}}}
 }
 \value{
-A complex number.
+A complex number, the value of the Jacobi zeta function
+\ifelse{html}{\out{Z(&phi;,m)}}{\eqn{Z(\phi,m)}{Z(phi,m)}}.
 }
 \description{
 Evaluate the Jacobi zeta function.

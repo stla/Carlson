@@ -12,7 +12,8 @@ Carlson_RD(x, y, z, minerror = 2 * .Machine$double.eps)
 \item{minerror}{bound on the relative error}
 }
 \value{
-A complex number.
+A complex number, the value of the Carlson elliptic integral
+\ifelse{html}{\out{R<sub>D</sub>(x,y,z)}}{\eqn{R_D(x,y,z)}{RD(x,y,z)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RD.

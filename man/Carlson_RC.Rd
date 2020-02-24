@@ -12,7 +12,8 @@ Carlson_RC(x, y, minerror = 2 * .Machine$double.eps)
 \item{minerror}{bound on the relative error passed to \code{\link{Carlson_RF}}}
 }
 \value{
-A complex number.
+A complex number, the value of the Carlson elliptic integral
+\ifelse{html}{\out{R<sub>C</sub>(x,y)}}{\eqn{R_C(x,y)}{RC(x,y)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RC.

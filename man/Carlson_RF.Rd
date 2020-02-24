@@ -12,7 +12,8 @@ Carlson_RF(x, y, z, minerror = 2 * .Machine$double.eps)
 \item{minerror}{bound on relative error}
 }
 \value{
-A complex number.
+A complex number, the value of the Carlson elliptic integral
+\ifelse{html}{\out{R<sub>F</sub>(x,y,z)}}{\eqn{R_F(x,y,z)}{RF(x,y,z)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RF.

@@ -1,3 +1,8 @@
+## Summary 
+
+My previous submission has been rejected. 
+I have elaborated the Description field and the value fields of the functions.
+
 ## Test environments
 
 * ubuntu 18.04, R 3.6.2

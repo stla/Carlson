@@ -6,7 +6,8 @@
 #' @param minerror the bound on the relative error passed to
 #' \code{\link{Carlson_RF}}
 #'
-#' @return A complex number.
+#' @return A complex number, the value of the incomplete elliptic integral
+#' \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
 #' @export
 #'
 #' @examples elliptic_F(1, 0.2)

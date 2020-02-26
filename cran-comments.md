@@ -1,7 +1,8 @@
 ## Summary 
 
 My previous submission has been rejected. 
-I have elaborated the Description field and the value fields of the functions.
+I have elaborated the Description field and the value fields of the functions, 
+as requested by the CRAN team.
 
 ## Test environments
 

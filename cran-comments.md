@@ -1,8 +1,6 @@
 ## Summary 
 
-My previous submission has been rejected. 
-I have elaborated the Description field and the value fields of the functions, 
-as requested by the CRAN team.
+I have fixed the DOI in the description, as requested by the CRAN team.
 
 ## Test environments
 
@@ -11,6 +9,4 @@ as requested by the CRAN team.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+OK

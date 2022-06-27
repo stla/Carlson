@@ -4,3 +4,4 @@
 ^inst/someTests$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^\.github$

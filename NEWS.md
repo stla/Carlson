@@ -1,3 +1,8 @@
+# Carlson 1.1.0 (2022-06-28)
+
+* Efficiency improvement.
+
+
 # Carlson 1.0.1 (2021-01-16)
 
 * Fixed the DOI in the description.

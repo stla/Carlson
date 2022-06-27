@@ -1,11 +1,7 @@
-## Summary 
-
-I have fixed the DOI in the description, as requested by the CRAN team.
-
 ## Test environments
 
-* ubuntu 18.04, R 3.6.2
-* win-builder (devel and release)
+* Windows 10, R 4.2.0
+* win-builder devel
 
 ## R CMD check results
 

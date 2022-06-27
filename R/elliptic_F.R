@@ -37,18 +37,22 @@ elliptic_F <- function(phi, m, minerror = 2*.Machine$double.eps){
       sine * Carlson_RF(cosine2, oneminusmsine2, 1, minerror)
     }
   }else if(Re(phi) > pi/2){
-    k <- 0
-    while(Re(phi) > pi/2){
-      phi <- phi - pi
-      k <- k + 1
-    }
+    k <- ceiling(Re(phi)/pi - 0.5)
+    phi <- phi - k*pi
+    # k <- 0
+    # while(Re(phi) > pi/2){
+    #   phi <- phi - pi
+    #   k <- k + 1
+    # }
     2*k*elliptic_F(pi/2, m, minerror) + elliptic_F(phi, m, minerror)
   }else{
-    k <- 0
-    while(Re(phi) < -pi/2){
-      phi <- phi + pi
-      k <- k - 1
-    }
+    k <- -floor(0.5 - Re(phi)/pi)
+    phi <- phi - k*pi
+    # k <- 0
+    # while(Re(phi) < -pi/2){
+    #   phi <- phi + pi
+    #   k <- k - 1
+    # }
     2*k*elliptic_F(pi/2, m, minerror) + elliptic_F(phi, m, minerror)
   }
 }

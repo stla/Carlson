@@ -43,12 +43,12 @@ colormap2 <- function(z){
 
 f <- Vectorize(function(x, y){
   w <- x + 1i*y
-  z <- elliptic_E(w, 1, minerror = 1e-6)
+  z <- elliptic_F(w, .1+.1i, minerror = 1e-6)
   colormap1(z)
 })
 
-x <- seq(-2, 2, len = 1000)
-y <- seq(-pi/2, pi/2, len = 1000)
+x <- seq(-2, 2, len = 2000)
+y <- seq(-2, 2, len = 2000)
 z <- outer(y, x, f)
 
 opar <- par(mar = c(0,0,0,0), bg = bkgcol)
@@ -58,7 +58,7 @@ image <- z
 rasterImage(image, -100, -100, 100, 100)
 par(opar)
 
-svg("ellipticE.svg")
+svg("ellipticF.svg")
 opar <- par(mar = c(0,0,0,0), bg = bkgcol)
 plot(c(-100, 100), c(-100, 100), type = "n",
      xlab = "", ylab = "", axes = FALSE, asp = 1)
@@ -68,6 +68,6 @@ par(opar)
 dev.off()
 
 rsvg::rsvg_png(
-  "ellipticE.svg", "ellipticE.png", width = 512, height = 512
+  "ellipticF.svg", "ellipticF.png", width = 512, height = 512
 )
 

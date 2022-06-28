@@ -6,3 +6,4 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^inst/images$
+^CRAN-SUBMISSION$

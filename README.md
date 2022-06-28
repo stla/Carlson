@@ -9,3 +9,5 @@ Carlson elliptic integrals and incomplete elliptic integrals with complex argume
 ![](https://raw.githubusercontent.com/stla/Carlson/master/inst/images/ellipticE.png)
 
 ![](https://raw.githubusercontent.com/stla/Carlson/master/inst/images/ellipticF.png)
+
+![](https://raw.githubusercontent.com/stla/Carlson/master/inst/images/CarlsonBall.gif)

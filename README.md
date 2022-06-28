@@ -5,3 +5,6 @@
 <!-- badges: end -->
 
 Carlson elliptic integrals and incomplete elliptic integrals with complex arguments.
+
+![](https://raw.githubusercontent.com/stla/Carlson/master/inst/images/ellipticE.png)
+

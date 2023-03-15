@@ -1,6 +1,6 @@
 ## Test environments
 
-* Windows 10, R 4.2.0
+* Linux Mint 20, R 4.2.2
 * win-builder devel
 
 ## R CMD check results

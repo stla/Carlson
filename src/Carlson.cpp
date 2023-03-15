@@ -19,8 +19,8 @@ Rcomplex Carlson_RF_(Rcomplex xr, Rcomplex yr, Rcomplex zr, double err) {
   cplx y = fromRcplx(yr);
   cplx z = fromRcplx(zr);
   long double dx = 2.0 * (long double)err;
-  long double dy = 2.0 * (long double)err;
-  long double dz = 2.0 * (long double)err;
+  long double dy = dx;
+  long double dz = dx;
   cplx A;
   while(dx > err || dy > err || dz > err) {
     cplx srx = std::sqrt(x);
@@ -50,8 +50,8 @@ Rcomplex Carlson_RD_(Rcomplex xr, Rcomplex yr, Rcomplex zr, double err) {
   cplx y = fromRcplx(yr);
   cplx z = fromRcplx(zr);
   long double dx = 2.0 * (long double)err;
-  long double dy = 2.0 * (long double)err;
-  long double dz = 2.0 * (long double)err;
+  long double dy = dx;
+  long double dz = dx;
   cplx s(0.0, 0.0);
   long double fac = 1.0;
   cplx A;

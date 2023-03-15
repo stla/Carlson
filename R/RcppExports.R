@@ -5,3 +5,7 @@ Carlson_RF_ <- function(xr, yr, zr, err) {
     .Call(`_Carlson_Carlson_RF_`, xr, yr, zr, err)
 }
 
+Carlson_RD_ <- function(xr, yr, zr, err) {
+    .Call(`_Carlson_Carlson_RD_`, xr, yr, zr, err)
+}
+

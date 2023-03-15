@@ -24,9 +24,24 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// Carlson_RD_
+Rcomplex Carlson_RD_(Rcomplex xr, Rcomplex yr, Rcomplex zr, double err);
+RcppExport SEXP _Carlson_Carlson_RD_(SEXP xrSEXP, SEXP yrSEXP, SEXP zrSEXP, SEXP errSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcomplex >::type xr(xrSEXP);
+    Rcpp::traits::input_parameter< Rcomplex >::type yr(yrSEXP);
+    Rcpp::traits::input_parameter< Rcomplex >::type zr(zrSEXP);
+    Rcpp::traits::input_parameter< double >::type err(errSEXP);
+    rcpp_result_gen = Rcpp::wrap(Carlson_RD_(xr, yr, zr, err));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Carlson_Carlson_RF_", (DL_FUNC) &_Carlson_Carlson_RF_, 4},
+    {"_Carlson_Carlson_RD_", (DL_FUNC) &_Carlson_Carlson_RD_, 4},
     {NULL, NULL, 0}
 };
 

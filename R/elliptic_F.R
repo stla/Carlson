@@ -4,15 +4,15 @@
 #' @param phi amplitude, real or complex number
 #' @param m parameter, real or complex number
 #' @param minerror the bound on the relative error passed to
-#' \code{\link{Carlson_RF}}
+#'   \code{\link{Carlson_RF}}
 #'
 #' @return A complex number, the value of the incomplete elliptic integral
-#' \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
+#'   \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
 #' @export
 #'
 #' @examples elliptic_F(1, 0.2)
 #' gsl::ellint_F(1, sqrt(0.2))
-elliptic_F <- function(phi, m, minerror = 2*.Machine$double.eps){
+elliptic_F <- function(phi, m, minerror = 1e-15){
   if(phi == 0 || m == Inf || m == -Inf){
     as.complex(0)
   }else if(Re(phi) == 0 && is.infinite(Im(phi)) && Im(m) == 0 && Re(m) > 0 &&

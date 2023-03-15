@@ -13,15 +13,15 @@ Carlson_RC(x, y, minerror = 2 * .Machine$double.eps)
 }
 \value{
 A complex number, the value of the Carlson elliptic integral
-\ifelse{html}{\out{R<sub>C</sub>(x,y)}}{\eqn{R_C(x,y)}{RC(x,y)}}.
+  \ifelse{html}{\out{R<sub>C</sub>(x,y)}}{\eqn{R_C(x,y)}{RC(x,y)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RC.
 }
 \note{
 The function returns a value when \code{x} or \code{y}
-are negative real numbers, but this value is not the one of the
-Carlson integral.
+  are negative real numbers, but this value is not the one of the
+  Carlson integral.
 }
 \examples{
 Carlson_RC(5, 2)

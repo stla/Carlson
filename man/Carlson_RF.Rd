@@ -4,7 +4,7 @@
 \alias{Carlson_RF}
 \title{Carlson elliptic integral RF}
 \usage{
-Carlson_RF(x, y, z, minerror = 2 * .Machine$double.eps)
+Carlson_RF(x, y, z, minerror = 1e-15)
 }
 \arguments{
 \item{x, y, z}{real or complex numbers; at most one can be 0}
@@ -13,15 +13,15 @@ Carlson_RF(x, y, z, minerror = 2 * .Machine$double.eps)
 }
 \value{
 A complex number, the value of the Carlson elliptic integral
-\ifelse{html}{\out{R<sub>F</sub>(x,y,z)}}{\eqn{R_F(x,y,z)}{RF(x,y,z)}}.
+  \ifelse{html}{\out{R<sub>F</sub>(x,y,z)}}{\eqn{R_F(x,y,z)}{RF(x,y,z)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RF.
 }
 \note{
 The function returns a value when \code{x}, \code{y} or \code{z}
-are negative real numbers, but this value is not the one of the
-Carlson integral.
+  are negative real numbers, but this value is not the one of the
+  Carlson integral.
 }
 \examples{
 Carlson_RF(5, 2, 3)

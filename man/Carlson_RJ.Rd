@@ -13,15 +13,15 @@ Carlson_RJ(x, y, z, p, minerror = 2 * .Machine$double.eps)
 }
 \value{
 A complex number, the value of the Carlson elliptic integral
-\ifelse{html}{\out{R<sub>J</sub>(x,y,z,t)}}{\eqn{R_J(x,y,z,t)}{RJ(x,y,z,t)}}.
+  \ifelse{html}{\out{R<sub>J</sub>(x,y,z,t)}}{\eqn{R_J(x,y,z,t)}{RJ(x,y,z,t)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RJ.
 }
 \note{
 The function returns a value when \code{x}, \code{y}, \code{z} or
-\code{p} are negative real numbers, but this value is not the one of the
-Carlson integral.
+  \code{p} are negative real numbers, but this value is not the one of the
+  Carlson integral.
 }
 \examples{
 Carlson_RJ(5, 2, 3, 4)

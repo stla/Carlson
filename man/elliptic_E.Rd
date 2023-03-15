@@ -16,7 +16,7 @@ elliptic_E(phi, m, minerror = 2 * .Machine$double.eps)
 }
 \value{
 A complex number, the value of the incomplete elliptic integral
-\ifelse{html}{\out{E(&phi;,m)}}{\eqn{E(\phi,m)}{E(phi,m)}}.
+  \ifelse{html}{\out{E(&phi;,m)}}{\eqn{E(\phi,m)}{E(phi,m)}}.
 }
 \description{
 Evaluate the incomplete elliptic integral of the second kind.

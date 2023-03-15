@@ -16,7 +16,7 @@
 #' gsl::ellint_RD(5, 2, 3)
 Carlson_RD <- function(x, y, z, minerror = 1e-15){
   stopifnot(minerror > 0)
-  if(sum(c(x,y,z)==0) > 1){
+  if(sum(c(x, y, z) == 0) > 1L){
     stop("At most one of `x`, `y`, `z` can be 0.")
   }
   x <- as.complex(x); y <- as.complex(y); z <- as.complex(z)

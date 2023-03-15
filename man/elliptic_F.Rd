@@ -16,7 +16,7 @@ elliptic_F(phi, m, minerror = 2 * .Machine$double.eps)
 }
 \value{
 A complex number, the value of the incomplete elliptic integral
-\ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
+  \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
 }
 \description{
 Evaluate the incomplete elliptic integral of the first kind.

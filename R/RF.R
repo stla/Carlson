@@ -5,12 +5,12 @@
 #' @param minerror bound on relative error
 #'
 #' @return A complex number, the value of the Carlson elliptic integral
-#' \ifelse{html}{\out{R<sub>F</sub>(x,y,z)}}{\eqn{R_F(x,y,z)}{RF(x,y,z)}}.
+#'   \ifelse{html}{\out{R<sub>F</sub>(x,y,z)}}{\eqn{R_F(x,y,z)}{RF(x,y,z)}}.
 #' @export
 #'
 #' @note The function returns a value when \code{x}, \code{y} or \code{z}
-#' are negative real numbers, but this value is not the one of the
-#' Carlson integral.
+#'   are negative real numbers, but this value is not the one of the
+#'   Carlson integral.
 #'
 #' @examples Carlson_RF(5, 2, 3)
 #' gsl::ellint_RF(5, 2, 3)

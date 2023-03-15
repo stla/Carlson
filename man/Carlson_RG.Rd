@@ -14,7 +14,7 @@ Carlson_RG(x, y, z, minerror = 2 * .Machine$double.eps)
 }
 \value{
 A complex number, the value of the Carlson elliptic integral
-\ifelse{html}{\out{R<sub>G</sub>(x,y,z)}}{\eqn{R_G(x,y,z)}{RG(x,y,z)}}.
+  \ifelse{html}{\out{R<sub>G</sub>(x,y,z)}}{\eqn{R_G(x,y,z)}{RG(x,y,z)}}.
 }
 \description{
 Evaluate the Carlson elliptic integral RG.

@@ -4,7 +4,7 @@
 \alias{Carlson_RD}
 \title{Carlson elliptic integral RD}
 \usage{
-Carlson_RD(x, y, z, minerror = 2 * .Machine$double.eps)
+Carlson_RD(x, y, z, minerror = 1e-15)
 }
 \arguments{
 \item{x, y, z}{real or complex numbers; at most one can be 0}

@@ -5,15 +5,15 @@
 #' @param n characteristic, real or complex number
 #' @param m parameter, real or complex number
 #' @param minerror the bound on the relative error passed to
-#' \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}
+#'   \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}
 #'
 #' @return A complex number, the value of the incomplete elliptic integral
-#' \ifelse{html}{\out{&Pi;(&phi;,n,m)}}{\eqn{\Pi(\phi,n,m)}{PI(phi,n,m)}}.
+#'   \ifelse{html}{\out{&Pi;(&phi;,n,m)}}{\eqn{\Pi(\phi,n,m)}{PI(phi,n,m)}}.
 #' @export
 #'
 #' @examples elliptic_PI(1, 0.8, 0.2)
 #' gsl::ellint_P(1, sqrt(0.2), -0.8)
-elliptic_PI <- function(phi, n, m, minerror = 2*.Machine$double.eps){
+elliptic_PI <- function(phi, n, m, minerror = 1e-15){
   if(phi == 0 || (is.infinite(Re(m)) && Im(m) == 0) ||
      (is.infinite(Re(n)) && Im(n) == 0)){
     as.complex(0)

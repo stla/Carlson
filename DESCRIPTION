@@ -15,6 +15,7 @@ Description: Evaluation of the Carlson elliptic integrals and the
 License: GPL-3
 URL: https://github.com/stla/Carlson
 BugReports: https://github.com/stla/Carlson/issues
+LinkingTo: Rcpp
 Suggests: 
     gsl,
     testthat

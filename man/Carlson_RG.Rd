@@ -4,7 +4,7 @@
 \alias{Carlson_RG}
 \title{Carlson elliptic integral RG}
 \usage{
-Carlson_RG(x, y, z, minerror = 2 * .Machine$double.eps)
+Carlson_RG(x, y, z, minerror = 1e-15)
 }
 \arguments{
 \item{x, y, z}{real or complex numbers; they can be zero}

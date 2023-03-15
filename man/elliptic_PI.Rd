@@ -4,7 +4,7 @@
 \alias{elliptic_PI}
 \title{Incomplete elliptic integral of the third kind}
 \usage{
-elliptic_PI(phi, n, m, minerror = 2 * .Machine$double.eps)
+elliptic_PI(phi, n, m, minerror = 1e-15)
 }
 \arguments{
 \item{phi}{amplitude, real or complex number}

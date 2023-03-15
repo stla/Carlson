@@ -4,7 +4,7 @@
 \alias{elliptic_Z}
 \title{Jacobi zeta function}
 \usage{
-elliptic_Z(phi, m, minerror = 2 * .Machine$double.eps)
+elliptic_Z(phi, m, minerror = 1e-15)
 }
 \arguments{
 \item{phi}{amplitude, real or complex number}

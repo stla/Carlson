@@ -4,7 +4,7 @@
 \alias{Carlson_RC}
 \title{Carlson elliptic integral RC}
 \usage{
-Carlson_RC(x, y, minerror = 2 * .Machine$double.eps)
+Carlson_RC(x, y, minerror = 1e-15)
 }
 \arguments{
 \item{x, y}{real or complex numbers, with \code{y} different from \code{0}}

@@ -16,5 +16,5 @@
 #' gsl::ellint_RC(5, 2)
 Carlson_RC <- function(x, y, minerror = 1e-15){
   if(y == 0) stop("`y` cannot be 0.")
-  Carlson_RF(x, y, y, minerror)
+  Carlson_RF_(x, y, y, minerror)
 }

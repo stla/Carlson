@@ -4,7 +4,7 @@
 \alias{elliptic_F}
 \title{Incomplete elliptic integral of the first kind}
 \usage{
-elliptic_F(phi, m, minerror = 2 * .Machine$double.eps)
+elliptic_F(phi, m, minerror = 1e-15)
 }
 \arguments{
 \item{phi}{amplitude, real or complex number}

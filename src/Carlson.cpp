@@ -81,3 +81,76 @@ Rcomplex Carlson_RD_(Rcomplex xr, Rcomplex yr, Rcomplex zr, double err) {
   cplx out = ((long double)3.0)*s + h / (A * std::sqrt(A));
   return toRcplx(out);
 }
+
+// [[Rcpp::export]]
+Rcomplex Carlson_RJ_(
+    Rcomplex xr, Rcomplex yr, Rcomplex zr, Rcomplex pr, double err
+) {
+  cplx x = fromRcplx(xr);
+  cplx y = fromRcplx(yr);
+  cplx z = fromRcplx(zr);
+  cplx p = fromRcplx(pr);
+  cplx A0 = (x + y + z + p + p) / (long double)5.0;
+  cplx A = A0;
+  cplx delta = (p - x) * (p - y) * (p - z);
+  long double M =
+    std::max(
+      std::max(
+        std::max(
+          std::abs(A - x),
+          std::abs(A - y)
+        ),
+        std::abs(A-z)
+      ),
+      std::abs(A-p)
+    );
+  long double Q = std::pow(4.0/err, 1.0/6.0) * M;
+  std::vector<cplx> d(0);
+  std::vector<cplx> e(0);
+  long double f = 1.0;
+  long double fac = 1.0;
+  while(std::abs(A) <= Q) {
+    cplx srx = std::sqrt(x);
+    cplx sry = std::sqrt(y);
+    cplx srz = std::sqrt(z);
+    cplx srp = std::sqrt(p);
+    cplx dnew = (srp + srx) * (srp + sry) * (srp + srz);
+    d.push_back(f * dnew);
+    e.push_back(fac * delta / (dnew * dnew));
+    f *= 4.0;
+    fac /= 64.0;
+    cplx lambda = srx * sry + sry * srz + srz * srx;
+    x = (x + lambda) / (long double)4.0;
+    y = (y + lambda) / (long double)4.0;
+    z = (z + lambda) / (long double)4.0;
+    p = (p + lambda) / (long double)4.0;
+    A = (A + lambda) / (long double)4.0;
+    Q /= 4.0;
+  }
+  cplx fA = f * A;
+  cplx X = (A0-x) / fA;
+  cplx Y = (A0-y) / fA;
+  cplx Z = (A0-z) / fA;
+  cplx P = -(X + Y + Z) / (long double)2.0;
+  cplx P2 = P * P;
+  cplx E2 = X * Y + Y * Z + Z * X - ((long double)3.0)*P2;
+  cplx E3 = X * Y * Z + (((long double)2.0)*E2 + ((long double)4.0)*P2) * P;
+  cplx E4 = (((long double)2.0)*X*Y*Z + (E2 + ((long double)3.0)*P2) * P) * P;
+  cplx E5 = X * Y * Z * P2;
+  cplx h =
+    ((long double)1.0 - (long double)3.0*E2/(long double)14.0
+       + E3/(long double)6.0 + (long double)9.0*E2*E2/(long double)88.0
+       - (long double)3.0*E4/(long double)22.0
+       - (long double)9.0*E2*E3/(long double)52.0
+       + (long double)3.0*E5/(long double)26.0) / f;
+  cplx s(0.0, 0.0);
+  cplx one(1.0, 0.0);
+  int n = e.size();
+  for(int i = 0; i < n; i++) {
+    cplx srei = std::sqrt(e[i]);
+    cplx a = srei == (long double)0.0 ? one : std::atan(srei)/srei;
+    s += a / d[i];
+  }
+  cplx out = h / (A * std::sqrt(A)) + (long double)6.0 * s;
+  return toRcplx(out);
+}

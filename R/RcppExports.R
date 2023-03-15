@@ -9,3 +9,7 @@ Carlson_RD_ <- function(xr, yr, zr, err) {
     .Call(`_Carlson_Carlson_RD_`, xr, yr, zr, err)
 }
 
+Carlson_RJ_ <- function(xr, yr, zr, pr, err) {
+    .Call(`_Carlson_Carlson_RJ_`, xr, yr, zr, pr, err)
+}
+

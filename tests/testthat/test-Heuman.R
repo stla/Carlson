@@ -1,0 +1,11 @@
+test_that("Heuman", {
+  z <- Lambda0(pi/2, 1/2)
+  expect_equal(Re(z), 1)
+  expect_equal(Im(z), 0)
+  z <- Lambda0(asin(sqrt(8)/3), 0)
+  expect_equal(Re(z), sqrt(8)/3)
+  expect_equal(Im(z), 0)
+  z <- Lambda0(0, 1/sqrt(2))
+  expect_equal(Re(z), 0)
+  expect_equal(Im(z), 0)
+})

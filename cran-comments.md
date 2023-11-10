@@ -1,11 +1,11 @@
 ## Reverse dependencies
 
-No problem since I just added a new function.
+No problem since I just vectorized some functions.
 
 
 ## Test environments
 
-* Windows 10, R 4.3.1
+* Windows 10, R 4.3.2
 * win-builder devel
 
 

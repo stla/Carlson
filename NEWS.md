@@ -1,6 +1,7 @@
-# Carlson 2.1.0.9000 (2023-??-??)
+# Carlson 3.0.0 (2023-11-10)
 
-* Added a unit test.
+* The elliptic integrals are now evaluated in C++ and their corresponding R 
+functions are now vectorized.
 
 
 # Carlson 2.1.0 (2023-06-27)

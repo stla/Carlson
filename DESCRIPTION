@@ -1,8 +1,8 @@
 Type: Package
 Package: Carlson
 Title: Carlson Elliptic Integrals and Incomplete Elliptic Integrals
-Version: 2.1.0.9000
-Date: 2023-??-??
+Version: 3.0.0
+Date: 2023-11-10
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Evaluation of the Carlson elliptic integrals and the

@@ -10,7 +10,7 @@ Rcpp::ComplexVector test() {
 
 // [[Rcpp::export]]
 Rcpp::ComplexVector zero() {
-  Rcomplex z; // ok but warning
+  Rcomplex z {NAN, NA_REAL};
   return Rcpp::ComplexVector::create(z);
 }
 
@@ -21,4 +21,5 @@ Rcpp::ComplexVector zero() {
 
 /*** R
 test()
+zero()
 */

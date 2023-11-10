@@ -202,7 +202,7 @@ Rcpp::ComplexVector ellEcpp(
       kpi.i = 0.0;
       phi = phi - kpi;
       Rcomplex ktimes2;
-      ktimes2.r = 2 * k;
+      ktimes2.r = 2.0 * k;
       ktimes2.i = 0.0;
       Rcomplex PI_2;
       PI_2.r = M_PI_2;
@@ -217,4 +217,25 @@ Rcpp::ComplexVector ellEcpp(
     out(j) = outj;
   }
   return out;
+}
+
+Rcomplex ellF(Rcomplex phi, Rcomplex m, double err) {
+  Rcomplex out;
+  if(Rcpp::ComplexVector::is_na(phi) || Rcpp::ComplexVector::is_na(m)) {
+    out.r = NA_REAL;
+    out.i = NA_REAL;
+  } else if(
+      (phi.r == 0.0 && phi.i == 0.0) || std::isinf(m.r) || std::isinf(m.i)
+    ) {
+    out.r = 0.0;
+    out.i = 0.0;
+  } else if(
+    phi.r == 0.0 && std::isinf(phi.i) && m.i == 0.0 && m.r > 0 && m.r < 1
+  ) {
+    double s = phi.i > 0.0 ? 1.0 : -1.0;
+    Rcomplex PI_2 {M_PI_2, 0.0};
+    Rcomplex minv {1.0/m.r, 0.0};
+    Rcomplex msqrt {std::sqrt(m.r), 0.0};
+    out = s * (ellF(PI_2, m, err) - ellF(PI_2, minv, err) / msqrt);
+  }
 }

@@ -378,6 +378,7 @@ Rcpp::ComplexVector ellZcpp(
 
 Rcomplex ellPI(Rcomplex phi, Rcomplex n, Rcomplex m, double err) {
   Rcomplex out;
+  bool complete = phi.r == M_PI_2 && phi.i == 0.0;
   if(
       Rcpp::ComplexVector::is_na(phi) || Rcpp::ComplexVector::is_na(n)
       || Rcpp::ComplexVector::is_na(m)
@@ -391,26 +392,24 @@ Rcomplex ellPI(Rcomplex phi, Rcomplex n, Rcomplex m, double err) {
   ) {
     out.r = 0.0;
     out.i = 0.0;
-  } else if(phi.r == M_PI_2 && phi.i == 0.0) {
-    if(m.r == 1.0 && m.i == 0.0 && n.r != 1.0 && n.i == 0.0) {
-      out.r = n.r > 1.0 ? std::numeric_limits<double>::infinity() :
-                          -std::numeric_limits<double>::infinity();
-      out.i = 0.0;
-    } else if(n.r == 1.0 && n.i == 0.0) {
-      out.r = NAN;
-      out.i = NAN;
-    } else if(m.r == 0.0 && m.i == 0.0) {
-      cplx PI_2(M_PI_2, 0.0);
-      cplx one(1.0, 0.0);
-      out = toRcplx(PI_2 / std::sqrt(one - fromRcplx(n)));
-    } else if(n == m) {
-      Rcomplex one {1.0, 0.0};
-      Rcomplex PI_2 {M_PI_2, 0.0};
-      out = ellE(PI_2, m, err) / (one - m);
-    } else if(n.r == 0.0 && n.i == 0.0) {
-      Rcomplex PI_2 {M_PI_2, 0.0};
-      out = ellF(PI_2, m, err);
-    }
+  } else if(complete && m.r == 1.0 && m.i == 0.0 && n.r != 1.0 && n.i == 0.0) {
+    out.r = n.r > 1.0 ? -std::numeric_limits<double>::infinity() :
+                        std::numeric_limits<double>::infinity();
+    out.i = 0.0;
+  } else if(complete && n.r == 1.0 && n.i == 0.0) {
+    out.r = NAN;
+    out.i = NAN;
+  } else if(complete && m.r == 0.0 && m.i == 0.0) {
+    cplx PI_2(M_PI_2, 0.0);
+    cplx one(1.0, 0.0);
+    out = toRcplx(PI_2 / std::sqrt(one - fromRcplx(n)));
+  } else if(complete && n == m) {
+    Rcomplex one {1.0, 0.0};
+    Rcomplex PI_2 {M_PI_2, 0.0};
+    out = ellE(PI_2, m, err) / (one - m);
+  } else if(complete && n.r == 0.0 && n.i == 0.0) {
+    Rcomplex PI_2 {M_PI_2, 0.0};
+    out = ellF(PI_2, m, err);
   } else if(phi.r >= -M_PI_2 && phi.r <= M_PI_2) {
     cplx sine = std::sin(fromRcplx(phi));
     if(std::isinf(sine.real()) || std::isinf(sine.imag())) {
@@ -422,12 +421,12 @@ Rcomplex ellPI(Rcomplex phi, Rcomplex n, Rcomplex m, double err) {
     Rcomplex oneminusmsine2 = one - m*sine2;
     Rcomplex oneminusnsine2 = one - n*sine2;
     Rcomplex one_3 {1.0 / 3.0, 0.0};
-    out = toRcplx(sine) * (Carlson_RF_(cosine2, oneminusmsine2, one, err) -
+    out = toRcplx(sine) * (Carlson_RF_(cosine2, oneminusmsine2, one, err) +
         one_3 * n * sine2 *
         Carlson_RJ_(cosine2, oneminusmsine2, one, oneminusnsine2, err));
   } else {
     double k = phi.r > M_PI_2 ?
-    ceil(phi.r/M_PI - 0.5) : -floor(0.5 - phi.r/M_PI);
+      ceil(phi.r/M_PI - 0.5) : -floor(0.5 - phi.r/M_PI);
     Rcomplex kpi {M_PI * k, 0.0};
     phi = phi - kpi;
     Rcomplex ktimes2 {2.0 * k, 0.0};

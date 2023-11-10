@@ -1,13 +1,13 @@
 #' Incomplete elliptic integral of the first kind
 #' @description Evaluate the incomplete elliptic integral of the first kind.
 #'
-#' @param phi amplitude, real or complex number
-#' @param m parameter, real or complex number
+#' @param phi amplitude, real or complex number/vector
+#' @param m parameter, real or complex number/vectot
 #' @param minerror the bound on the relative error passed to
 #'   \code{\link{Carlson_RF}}
 #'
-#' @return A complex number, the value of the incomplete elliptic integral
-#'   \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
+#' @return A complex number or vector, the value(s) of the incomplete elliptic
+#'   integral \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
 #' @export
 #'
 #' @examples elliptic_F(1, 0.2)

@@ -436,3 +436,16 @@ Rcomplex ellPI(Rcomplex phi, Rcomplex n, Rcomplex m, double err) {
   }
   return out;
 }
+
+//[[Rcpp::export]]
+Rcpp::ComplexVector ellPIcpp(
+    Rcpp::ComplexVector phi_, Rcpp::ComplexVector n_,
+    Rcpp::ComplexVector m_, double err
+) {
+  int n = phi_.size();
+  Rcpp::ComplexVector out(n);
+  for(int i = 0; i < n; i++) {
+    out(i) = ellPI(phi_(i), n_(i), m_(i), err);
+  }
+  return out;
+}

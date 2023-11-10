@@ -92,6 +92,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ellPIcpp
+Rcpp::ComplexVector ellPIcpp(Rcpp::ComplexVector phi_, Rcpp::ComplexVector n_, Rcpp::ComplexVector m_, double err);
+RcppExport SEXP _Carlson_ellPIcpp(SEXP phi_SEXP, SEXP n_SEXP, SEXP m_SEXP, SEXP errSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::ComplexVector >::type phi_(phi_SEXP);
+    Rcpp::traits::input_parameter< Rcpp::ComplexVector >::type n_(n_SEXP);
+    Rcpp::traits::input_parameter< Rcpp::ComplexVector >::type m_(m_SEXP);
+    Rcpp::traits::input_parameter< double >::type err(errSEXP);
+    rcpp_result_gen = Rcpp::wrap(ellPIcpp(phi_, n_, m_, err));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Carlson_Carlson_RF_", (DL_FUNC) &_Carlson_Carlson_RF_, 4},
@@ -100,6 +114,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Carlson_ellEcpp", (DL_FUNC) &_Carlson_ellEcpp, 3},
     {"_Carlson_ellFcpp", (DL_FUNC) &_Carlson_ellFcpp, 3},
     {"_Carlson_ellZcpp", (DL_FUNC) &_Carlson_ellZcpp, 3},
+    {"_Carlson_ellPIcpp", (DL_FUNC) &_Carlson_ellPIcpp, 4},
     {NULL, NULL, 0}
 };
 

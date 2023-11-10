@@ -25,3 +25,7 @@ ellZcpp <- function(phi_, m_, err) {
     .Call(`_Carlson_ellZcpp`, phi_, m_, err)
 }
 
+ellPIcpp <- function(phi_, n_, m_, err) {
+    .Call(`_Carlson_ellPIcpp`, phi_, n_, m_, err)
+}
+

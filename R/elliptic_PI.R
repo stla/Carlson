@@ -20,7 +20,9 @@ elliptic_PI <- function(phi, n, m, minerror = 1e-15) {
   m   <- as.complex(m)
   lgths <- c(length(phi), length(n), length(m))
   L <- max(lgths)
-  stopifnot(all(lgths %in% c(1L, L)))
+  if(!all(lgths %in% c(1L, L))) {
+    stop("Incompatible lengths of the arguments.")
+  }
   if(L != 1L && any(lgths == 1L)) {
     if(length(phi) == 1L) {
       phi <- rep(phi, L)

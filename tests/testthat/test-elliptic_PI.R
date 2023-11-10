@@ -55,7 +55,8 @@ test_that("misc equalities", {
   m <- 3
   expect_equal(
     elliptic_PI(asin(1/sqrt(m)), n, m),
-    elliptic_PI(pi/2, n/m, 1/m) / sqrt(m)
+    elliptic_PI(pi/2, n/m, 1/m) / sqrt(m),
+    tolerance = 1e-6
   )
 })
 

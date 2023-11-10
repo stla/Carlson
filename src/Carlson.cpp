@@ -232,9 +232,8 @@ Rcomplex ellF(Rcomplex phi, Rcomplex m, double err) {
   } else if(
       phi.r == 0.0 && std::isinf(phi.i) && m.i == 0.0 && m.r > 0 && m.r < 1
   ) {
-    double s = phi.i > 0.0 ? 1.0 : -1.0;
     Rcomplex PI_2 {M_PI_2, 0.0};
-    Rcomplex minv {1.0/m.r, 0.0};
+    Rcomplex minv {1.0 / m.r, 0.0};
     Rcomplex msqrt {std::sqrt(m.r), 0.0};
     out = ellF(PI_2, m, err) - ellF(PI_2, minv, err) / msqrt;
     if(phi.i < 0) {

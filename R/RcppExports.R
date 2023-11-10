@@ -17,3 +17,7 @@ ellEcpp <- function(phi_, m_, err) {
     .Call(`_Carlson_ellEcpp`, phi_, m_, err)
 }
 
+ellFcpp <- function(phi_, m_, err) {
+    .Call(`_Carlson_ellFcpp`, phi_, m_, err)
+}
+

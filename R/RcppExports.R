@@ -13,3 +13,7 @@ Carlson_RJ_ <- function(xr, yr, zr, pr, err) {
     .Call(`_Carlson_Carlson_RJ_`, xr, yr, zr, pr, err)
 }
 
+ellEcpp <- function(phi_, m_, err) {
+    .Call(`_Carlson_ellEcpp`, phi_, m_, err)
+}
+

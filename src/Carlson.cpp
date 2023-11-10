@@ -161,11 +161,15 @@ Rcpp::ComplexVector ellEcpp(
 ) {
   int n = phi_.size();
   Rcpp::ComplexVector out(n);
+  Rcpp::LogicalVector phi_NA = Rcpp::is_na(phi_);
+  Rcpp::LogicalVector m_NA   = Rcpp::is_na(m_);
   for(int j = 0; j < n; j++) {
+    Rcomplex outj;
     Rcomplex phi = phi_(j);
     Rcomplex m   = m_(j);
-    Rcomplex outj;
-    if(phi.r == 0.0 && phi.i == 0.0) {
+    if(phi_NA(j) || m_NA(j)) {
+      outj = Rcpp::ComplexVector::get_na();
+    } else if(phi.r == 0.0 && phi.i == 0.0) {
       outj.r = 0.0;
       outj.i = 0.0;
     } else if(phi.r >= -M_PI_2 && phi.r <= M_PI_2) {

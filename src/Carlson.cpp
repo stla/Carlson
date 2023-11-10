@@ -154,3 +154,63 @@ Rcomplex Carlson_RJ_(
   cplx out = h / (A * std::sqrt(A)) + (long double)6.0 * s;
   return toRcplx(out);
 }
+
+//[[Rcpp::export]]
+Rcpp::ComplexVector ellEcpp(
+    Rcpp::ComplexVector phi_, Rcpp::ComplexVector m_, double err
+) {
+  int n = phi_.size();
+  Rcpp::ComplexVector out(n);
+  for(int j = 0; j < n; j++) {
+    Rcomplex phi = phi_(j);
+    Rcomplex m   = m_(j);
+    Rcomplex outj;
+    if(phi.r == 0.0 && phi.i == 0.0) {
+      outj.r = 0.0;
+      outj.i = 0.0;
+    } else if(phi.r >= -M_PI_2 && phi.r <= M_PI_2) {
+      if(m.r == 0.0 && m.i == 0.0) {
+        outj = phi;
+      } else if(m.r == 1.0 && m.i == 0.0) {
+        outj = toRcplx(std::sin(fromRcplx(phi)));
+      } else {
+        cplx sine = std::sin(fromRcplx(phi));
+        if(std::isinf(sine.real()) || std::isinf(sine.imag())) {
+          Rcpp::stop("`sin(phi)` is not finite.");
+        }
+        Rcomplex sine2 = toRcplx(sine * sine);
+        Rcomplex one;
+        one.r = 1.0;
+        one.i = 0.0;
+        Rcomplex cosine2 = one - sine2;
+        Rcomplex oneminusmsine2 = one - m*sine2;
+        Rcomplex one_3;
+        one_3.r = 1.0 / 3.0;
+        one_3.i = 0.0;
+        outj = toRcplx(sine) * (Carlson_RF_(cosine2, oneminusmsine2, one, err) -
+          one_3 * m * sine2 * Carlson_RD_(cosine2, oneminusmsine2, one, err));
+      }
+    } else {
+      double k = phi.r > M_PI_2 ?
+        ceil(phi.r/M_PI - 0.5) : -floor(0.5 - phi.r/M_PI);
+      Rcomplex kpi;
+      kpi.r = M_PI * k;
+      kpi.i = 0.0;
+      phi = phi - kpi;
+      Rcomplex ktimes2;
+      ktimes2.r = 2 * k;
+      ktimes2.i = 0.0;
+      Rcomplex PI_2;
+      PI_2.r = M_PI_2;
+      PI_2.i = 0.0;
+      Rcpp::ComplexVector PI_2vec = Rcpp::ComplexVector::create(PI_2);
+      Rcpp::ComplexVector mvec    = Rcpp::ComplexVector::create(m);
+      Rcpp::ComplexVector phivec  = Rcpp::ComplexVector::create(phi);
+      Rcpp::ComplexVector E1 = ellEcpp(PI_2vec, mvec, err);
+      Rcpp::ComplexVector E2 = ellEcpp(phivec, mvec, err);
+      outj = ktimes2 * E1(0) + E2(0);
+    }
+    out(j) = outj;
+  }
+  return out;
+}

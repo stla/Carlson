@@ -1,28 +1,36 @@
 #' Incomplete elliptic integral of the third kind
 #' @description Evaluate the incomplete elliptic integral of the third kind.
 #'
-#' @param phi amplitude, real or complex number
-#' @param n characteristic, real or complex number
-#' @param m parameter, real or complex number
+#' @param phi amplitude, real or complex number/vector
+#' @param n characteristic, real or complex number/vector
+#' @param m parameter, real or complex number/vector
 #' @param minerror the bound on the relative error passed to
 #'   \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}
 #'
-#' @return A complex number, the value of the incomplete elliptic integral
+#' @return A complex number or vector, the value(s) of the incomplete elliptic
+#'   integral
 #'   \ifelse{html}{\out{&Pi;(&phi;,n,m)}}{\eqn{\Pi(\phi,n,m)}{PI(phi,n,m)}}.
 #' @export
 #'
 #' @examples elliptic_PI(1, 0.8, 0.2)
 #' gsl::ellint_P(1, sqrt(0.2), -0.8)
-elliptic_PI <- function(phi, n, m, minerror = 1e-15){
+elliptic_PI <- function(phi, n, m, minerror = 1e-15) {
   phi <- as.complex(phi)
   n   <- as.complex(n)
   m   <- as.complex(m)
-  if(length(phi) == 1L) {
-    phi <- rep(phi, length(m))
-  } else if(length(m) == 1L) {
-    m <- rep(m, length(phi))
-  } else if(length(phi) != length(m)) {
-    stop("Incompatible lengths of `phi` and `m`.")
+  lgths <- c(length(phi), length(n), length(m))
+  L <- max(lgths)
+  stopifnot(all(lgths %in% c(1L, L)))
+  if(L != 1L && any(lgths == 1L)) {
+    if(length(phi) == 1L) {
+      phi <- rep(phi, L)
+    }
+    if(length(n) == 1L) {
+      n <- rep(n, L)
+    }
+    if(length(m) == 1L) {
+      m <- rep(m, L)
+    }
   }
   ellPIcpp(phi, n, m, minerror)
   # if(phi == 0 || (is.infinite(Re(m)) && Im(m) == 0) ||

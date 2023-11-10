@@ -7,15 +7,15 @@
 elliptic_Z(phi, m, minerror = 1e-15)
 }
 \arguments{
-\item{phi}{amplitude, real or complex number}
+\item{phi}{amplitude, real or complex number/vector}
 
-\item{m}{parameter, real or complex number}
+\item{m}{parameter, real or complex number/vector}
 
 \item{minerror}{bound on relative error passed to \code{\link{elliptic_E}}
 and \code{\link{elliptic_F}}}
 }
 \value{
-A complex number, the value of the Jacobi zeta function
+A complex number or vector, the value(s) of the Jacobi zeta function
   \ifelse{html}{\out{Z(&phi;,m)}}{\eqn{Z(\phi,m)}{Z(phi,m)}}.
 }
 \description{

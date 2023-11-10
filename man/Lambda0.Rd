@@ -7,15 +7,15 @@
 Lambda0(phi, m, minerror = 1e-14)
 }
 \arguments{
-\item{phi}{Jacobi amplitude, a complex number}
+\item{phi}{Jacobi amplitude, a complex number/vector}
 
-\item{m}{parameter, a complex number}
+\item{m}{parameter, a complex number/vector}
 
 \item{minerror}{the bound on the relative error passed to
 \code{\link{elliptic_F}} and \code{\link{elliptic_Z}}}
 }
 \value{
-A complex number.
+A complex number or vector.
 }
 \description{
 Evaluates the Heuman Lambda function.

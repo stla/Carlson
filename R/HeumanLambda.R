@@ -1,12 +1,12 @@
 #' @title Heuman Lambda function
 #' @description Evaluates the Heuman Lambda function.
 #'
-#' @param phi Jacobi amplitude, a complex number
-#' @param m parameter, a complex number
+#' @param phi Jacobi amplitude, a complex number/vector
+#' @param m parameter, a complex number/vector
 #' @param minerror the bound on the relative error passed to
 #'   \code{\link{elliptic_F}} and \code{\link{elliptic_Z}}
 #'
-#' @return A complex number.
+#' @return A complex number or vector.
 #' @export
 Lambda0 <- function(phi, m, minerror = 1e-14) {
   if(m == 0) {

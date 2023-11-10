@@ -1,13 +1,13 @@
 #' Incomplete elliptic integral of the second kind
 #' @description Evaluate the incomplete elliptic integral of the second kind.
 #'
-#' @param phi amplitude, real or complex number
-#' @param m parameter, real or complex number
+#' @param phi amplitude, real or complex number/vector
+#' @param m parameter, real or complex number/vector
 #' @param minerror the bound on the relative error passed to
 #'   \code{\link{Carlson_RF}} and \code{\link{Carlson_RD}}
 #'
-#' @return A complex number, the value of the incomplete elliptic integral
-#'   \ifelse{html}{\out{E(&phi;,m)}}{\eqn{E(\phi,m)}{E(phi,m)}}.
+#' @return A complex number or vector, the value(s) of the incomplete elliptic
+#'   integral \ifelse{html}{\out{E(&phi;,m)}}{\eqn{E(\phi,m)}{E(phi,m)}}.
 #' @export
 #'
 #' @examples elliptic_E(1, 0.2)

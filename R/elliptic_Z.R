@@ -1,12 +1,12 @@
 #' Jacobi zeta function
 #' @description Evaluate the Jacobi zeta function.
 #'
-#' @param phi amplitude, real or complex number
-#' @param m parameter, real or complex number
+#' @param phi amplitude, real or complex number/vector
+#' @param m parameter, real or complex number/vector
 #' @param minerror bound on relative error passed to \code{\link{elliptic_E}}
 #'   and \code{\link{elliptic_F}}
 #'
-#' @return A complex number, the value of the Jacobi zeta function
+#' @return A complex number or vector, the value(s) of the Jacobi zeta function
 #'   \ifelse{html}{\out{Z(&phi;,m)}}{\eqn{Z(\phi,m)}{Z(phi,m)}}.
 #' @export
 elliptic_Z <- function(phi, m, minerror = 1e-15) {

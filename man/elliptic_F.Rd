@@ -7,16 +7,16 @@
 elliptic_F(phi, m, minerror = 1e-15)
 }
 \arguments{
-\item{phi}{amplitude, real or complex number}
+\item{phi}{amplitude, real or complex number/vector}
 
-\item{m}{parameter, real or complex number}
+\item{m}{parameter, real or complex number/vectot}
 
 \item{minerror}{the bound on the relative error passed to
 \code{\link{Carlson_RF}}}
 }
 \value{
-A complex number, the value of the incomplete elliptic integral
-  \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
+A complex number or vector, the value(s) of the incomplete elliptic
+  integral \ifelse{html}{\out{F(&phi;,m)}}{\eqn{F(\phi,m)}{F(phi,m)}}.
 }
 \description{
 Evaluate the incomplete elliptic integral of the first kind.

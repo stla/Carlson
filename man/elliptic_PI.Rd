@@ -7,17 +7,18 @@
 elliptic_PI(phi, n, m, minerror = 1e-15)
 }
 \arguments{
-\item{phi}{amplitude, real or complex number}
+\item{phi}{amplitude, real or complex number/vector}
 
-\item{n}{characteristic, real or complex number}
+\item{n}{characteristic, real or complex number/vector}
 
-\item{m}{parameter, real or complex number}
+\item{m}{parameter, real or complex number/vector}
 
 \item{minerror}{the bound on the relative error passed to
 \code{\link{Carlson_RF}} and \code{\link{Carlson_RJ}}}
 }
 \value{
-A complex number, the value of the incomplete elliptic integral
+A complex number or vector, the value(s) of the incomplete elliptic
+  integral
   \ifelse{html}{\out{&Pi;(&phi;,n,m)}}{\eqn{\Pi(\phi,n,m)}{PI(phi,n,m)}}.
 }
 \description{

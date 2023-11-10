@@ -335,3 +335,43 @@ Rcpp::ComplexVector ellFcpp(
   }
   return out;
 }
+
+
+Rcomplex ellZ(Rcomplex phi, Rcomplex m, double err) {
+  Rcomplex out;
+  if(Rcpp::ComplexVector::is_na(phi) || Rcpp::ComplexVector::is_na(m)) {
+    out.r = NA_REAL;
+    out.i = NA_REAL;
+  } else if(std::isinf(m.r) && m.i == 0.0) {
+    out.r = NAN;
+    out.i = NAN;
+  } else if(m.r == 1.0 && m.i == 0.0) {
+    if(std::fabs(phi.r) <= M_PI_2) {
+      out = toRcplx(std::sin(fromRcplx(phi)));
+    } else {
+      double k = phi.r > M_PI_2 ?
+      ceil(phi.r/M_PI - 0.5) : -floor(0.5 - phi.r/M_PI);
+      Rcomplex kpi {M_PI * k, 0.0};
+      phi = phi - kpi;
+      out = toRcplx(std::sin(fromRcplx(phi)));
+    }
+  } else {
+    Rcomplex PI_2 {M_PI_2, 0.0};
+    out = ellE(phi, m, err) -
+      ellE(PI_2, m, err) / ellF(PI_2, m, err) * ellF(phi, m, err);
+  }
+  return out;
+}
+
+//[[Rcpp::export]]
+Rcpp::ComplexVector ellZcpp(
+    Rcpp::ComplexVector phi_, Rcpp::ComplexVector m_, double err
+) {
+  int n = phi_.size();
+  Rcpp::ComplexVector out(n);
+  for(int i = 0; i < n; i++) {
+    out(i) = ellZ(phi_(i), m_(i), err);
+  }
+  return out;
+}
+

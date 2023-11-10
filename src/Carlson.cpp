@@ -155,7 +155,59 @@ Rcomplex Carlson_RJ_(
   return toRcplx(out);
 }
 
+
+Rcomplex ellE(Rcomplex phi, Rcomplex m, double err) {
+  Rcomplex out;
+  if(Rcpp::ComplexVector::is_na(phi) || Rcpp::ComplexVector::is_na(m)) {
+    out.r = NA_REAL;
+    out.i = NA_REAL;
+  } else if(phi.r == 0.0 && phi.i == 0.0) {
+    out.r = 0.0;
+    out.i = 0.0;
+  } else if(phi.r >= -M_PI_2 && phi.r <= M_PI_2) {
+    if(m.r == 0.0 && m.i == 0.0) {
+      out = phi;
+    } else if(m.r == 1.0 && m.i == 0.0) {
+      out = toRcplx(std::sin(fromRcplx(phi)));
+    } else {
+      cplx sine = std::sin(fromRcplx(phi));
+      if(std::isinf(sine.real()) || std::isinf(sine.imag())) {
+        Rcpp::stop("`sin(phi)` is not finite.");
+      }
+      Rcomplex sine2 = toRcplx(sine * sine);
+      Rcomplex one {1.0, 0.0};
+      Rcomplex cosine2 = one - sine2;
+      Rcomplex oneminusmsine2 = one - m*sine2;
+      Rcomplex one_3 {1.0 / 3.0, 0.0};
+      out = toRcplx(sine) * (Carlson_RF_(cosine2, oneminusmsine2, one, err) -
+        one_3 * m * sine2 * Carlson_RD_(cosine2, oneminusmsine2, one, err));
+    }
+  } else {
+    double k = phi.r > M_PI_2 ?
+      ceil(phi.r/M_PI - 0.5) : -floor(0.5 - phi.r/M_PI);
+    Rcomplex kpi {M_PI * k, 0.0};
+    phi = phi - kpi;
+    Rcomplex ktimes2 {2.0 * k, 0.0};
+    Rcomplex PI_2 {M_PI_2, 0.0};
+    out = ktimes2 * ellE(PI_2, m, err) + ellE(phi, m, err);
+  }
+  return out;
+}
+
 //[[Rcpp::export]]
+Rcpp::ComplexVector ellEcpp(
+    Rcpp::ComplexVector phi_, Rcpp::ComplexVector m_, double err
+) {
+  int n = phi_.size();
+  Rcpp::ComplexVector out(n);
+  for(int i = 0; i < n; i++) {
+    out(i) = ellE(phi_(i), m_(i), err);
+  }
+  return out;
+}
+
+
+/*
 Rcpp::ComplexVector ellEcpp(
     Rcpp::ComplexVector phi_, Rcpp::ComplexVector m_, double err
 ) {
@@ -218,6 +270,7 @@ Rcpp::ComplexVector ellEcpp(
   }
   return out;
 }
+*/
 
 Rcomplex ellF(Rcomplex phi, Rcomplex m, double err) {
   Rcomplex out;
